@@ -1,3 +1,5 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 # Maximum-Entropy based Stochastic and Symbolic density estimation (MESSY)
 
 In this repository, we present an implementation of MESSY paper published in TMLR:
