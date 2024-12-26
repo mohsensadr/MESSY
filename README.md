@@ -7,7 +7,7 @@ https://openreview.net/pdf?id=Y2ru0LuQeS
 
 To use the code, first import the content of the ```messy.py```
 ```from messy import *```
-Then, instantiate the class ```MESSY``` by initializing its member member variables, e.g.
+Then, instantiate the class ```MESSY``` by initializing its member variables, e.g.
 ```
 highest_order = 4
 x = sp.symbols('x', real=True)
