@@ -152,7 +152,6 @@ class StatisticalModel:
         lams_hist = [lam]
         grad_ = []
         grad_hist = []
-        cond_hist = []
         while True:
           # gradient of MGF
           if sum(lrs) == 0:
@@ -171,8 +170,6 @@ class StatisticalModel:
           for k, sample in enumerate(samples_):
             hess[k, k:] = np.average(sample * samples_[k:], weights=lrs , axis=1)
             hess[k:, k] = hess[k, k:]
-          # print("cond hess: ", np.linalg.cond(hess))
-          cond_hist.append(np.linalg.cond(hess))
           # Newton step
           try:
             new_lam = lam - solve(hess, grad)
@@ -271,7 +268,7 @@ class StatisticalModel:
                   dH_new  = [sp.lambdify(x, dh, "numpy") for dh in dH]
                   L = self.Hess(Y, dH_new)
                   print("cond(L)", np.linalg.cond(L))
-                  if np.linalg.cond(L) < 1e2:
+                  if np.linalg.cond(L) < 10:
                     OKBasis = True
               else:
                 H = [x**i for i in range(1, self.poly_order + 1)]
