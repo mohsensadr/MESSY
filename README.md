@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5940225.svg)](https://openreview.net/pdf?id=Y2ru0LuQeS)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 # Maximum-Entropy based Stochastic and Symbolic density estimation (MESSY)
