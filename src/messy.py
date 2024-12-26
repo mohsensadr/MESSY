@@ -16,7 +16,7 @@ import time
 import sys
 from scipy.special import fresnel, gamma, hyp2f1
 
-class StatisticalModel:
+class MESSY:
     def __init__(self, n_levels=2, nm_xe=2, highest_order=2, nb_l=2, nb_u=4, poly_order=4, tree_depth=2, binary_operators = [sp.Mul], unary_functions = pow):
         self.x = sp.symbols('x', real=True)
         self.highest_order = highest_order
