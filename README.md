@@ -6,7 +6,7 @@
 In this repository, we present an implementation of the MESSY paper published in Transactions on Machine Learning Research:
 https://openreview.net/pdf?id=Y2ru0LuQeS
 
-To use the code, first import the content of the ```messy.py```
+To use the code, first, import the content of the ```messy.py```
 ```from messy import *```
 Then, instantiate the class ```MESSY``` by initializing its member variables, e.g.
 ```
@@ -23,14 +23,12 @@ Then, find the fit by calling
 dic, best_iter = messy.get_pdf(X, N_iters=10)
 ```
 
-In return, ```dic``` contains a list of fitted PDFs and ```best_iter``` is the index of the best-fitted pdf. You can check the MESSY-P and MESSY-S fits via
+In return, ```dic``` contains a list of fitted PDFs, and ```best_iter``` is the index of the best-fitted pdf. You can check the MESSY-P and MESSY-S fits via
 ```
 print("Found MESSY-P:")
 print( dic[0][1] )
-print("\n\n")
 
 print("Found MESSY-S:")
 print( dic[best_iter][1] )
-print("\n\n")
 ```
-For more details on how MESSY can be used, see notebooks in directory ```examples/```
+For more details on how MESSY can be used, see notebooks in the directory ```examples/```
