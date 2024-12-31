@@ -6,9 +6,15 @@
 In this repository, we present an implementation of the MESSY paper published in Transactions on Machine Learning Research:
 https://openreview.net/pdf?id=Y2ru0LuQeS
 
-To use the code, first, import the content of the ```messy.py```
+To use the code, first, import the content of the ```messy.py``` via
+
+
 ```from messy import *```
+
+
 Then, instantiate the class ```MESSY``` by initializing its member variables, e.g.
+
+
 ```
 highest_order = 4
 x = sp.symbols('x', real=True)
