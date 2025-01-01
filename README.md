@@ -6,6 +6,9 @@
 In this repository, we present an implementation of the MESSY paper published in Transactions on Machine Learning Research:
 https://openreview.net/pdf?id=Y2ru0LuQeS
 
+![Demo](examples/messy_bi-modal_2d.png)
+
+# Usage
 To use the code, first, import the content of the ```messy.py``` via
 
 
