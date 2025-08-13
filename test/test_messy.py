@@ -17,14 +17,14 @@ def test_cos_sin_output_type():
     s = messy.sin_(x)
     assert isinstance(c, sp.Basic)
     assert isinstance(s, sp.Basic)
-'''
+
 def test_moments_basic(messy_instance):
     h = [lambda z: z**2, lambda z: z+1]
     z = np.array([1., 2., 3.])
     result = messy_instance.moments(h, z)
     assert isinstance(result, np.ndarray)
     np.testing.assert_allclose(result, [np.mean(z**2), np.mean(z+1)])
-
+'''
 def test_is_even(messy_instance):
     f_even = x**2
     f_odd = x**3
