@@ -1,0 +1,60 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ci-cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Cleanup
+      - name: Cleanup workspace
+        run: |
+          rm -rf __pycache__ .pytest_cache build dist *.egg-info
+
+      # 2. Clone repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 3. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install flake8 nose rednose numpy
+
+      # 5. Lint with flake8
+      - name: Run flake8
+        run: flake8 src tests
+
+      # 6. Run tests with nose (patched for Python 3.10+)
+      - name: Run nose tests
+        run: |
+          PYTHONPATH=. nosetests \
+          --rednose \
+          --with-coverage --cover-package=src \
+          -v
+
+      # 7. Build image with Buildah
+      - name: Install Buildah
+        run: sudo apt-get update && sudo apt-get install -y buildah
+
+      - name: Build container image
+        run: buildah bud -t my-image:latest .
+
+      # 8. Deploy (placeholder example)
+      - name: Deploy to remote
+        env:
+          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
+        run: |
+          echo "Deploying to $DEPLOY_SERVER..."
+
