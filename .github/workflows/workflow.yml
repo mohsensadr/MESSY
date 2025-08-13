@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install flake8 nose rednose numpy sympy pytest pytest-cov
+          pip install flake8 nose rednose numpy sympy scipy pytest pytest-cov
 
       # 5. Lint with flake8
       #- name: Run flake8
