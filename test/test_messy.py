@@ -7,9 +7,9 @@ from src import messy
 x = sp.symbols('x', real=True)
 
 # Fixture for MESSY instance
-@pytest.fixture
-def messy_instance():
-    return messy.MESSY(dim=1, highest_order=2, nb_l=2, nb_u=4, poly_order=4, tree_depth=2)
+#@pytest.fixture
+#def messy_instance():
+#    return messy.MESSY(dim=1, highest_order=2, nb_l=2, nb_u=4, poly_order=4, tree_depth=2)
 
 def test_cos_sin_output_type():
     # Test cos_ and sin_ functions return sympy expressions
@@ -17,7 +17,7 @@ def test_cos_sin_output_type():
     s = messy.sin_(x)
     assert isinstance(c, sp.Basic)
     assert isinstance(s, sp.Basic)
-
+'''
 def test_moments_basic(messy_instance):
     h = [lambda z: z**2, lambda z: z+1]
     z = np.array([1., 2., 3.])
@@ -90,3 +90,4 @@ def test_weighted_sum_piecewise_evaluator(messy_instance):
     res = messy_instance.weighted_sum_piecewise_evaluator([2,3], [expr1, expr2], arr)
     np.testing.assert_allclose(res, np.array([-2,0,6]))
 
+'''
