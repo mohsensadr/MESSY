@@ -35,10 +35,11 @@ jobs:
       #- name: Run flake8
       #  run: flake8 src tests
 
-      # 6. Run tests with nose (patched for Python 3.10+)
+      # 6. Run tests with pytest
       - name: Run tests
         run: |
-          PYTHONPATH=. pytest --cov=my_package --cov-report=html tests/
+        PYTHONPATH=. pytest -v
+        #  PYTHONPATH=. pytest --cov=my_package --cov-report=html tests/
 
       # 7. Build image with Buildah
       - name: Install Buildah
