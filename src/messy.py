@@ -4,6 +4,7 @@ import random
 from scipy import integrate
 from scipy.linalg import solve, LinAlgError
 import warnings
+from sympy import oo, zoo, nan
 warnings.filterwarnings("ignore")
 
 x = sp.symbols('x', real=True)

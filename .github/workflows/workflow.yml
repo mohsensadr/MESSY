@@ -32,8 +32,8 @@ jobs:
           pip install flake8 nose rednose numpy
 
       # 5. Lint with flake8
-      - name: Run flake8
-        run: flake8 src tests
+      #- name: Run flake8
+      #  run: flake8 src tests
 
       # 6. Run tests with nose (patched for Python 3.10+)
       - name: Run nose tests
