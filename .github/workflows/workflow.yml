@@ -44,18 +44,3 @@ jobs:
             --cov-report=html \
             --maxfail=0 \
             test/
-
-      - name: Set up Buildah
-        uses: redhat-actions/setup-buildah@v2
-
-      - name: Build container image
-        run: |
-          # Set the path to the Dockerfile
-          DOCKERFILE_PATH=docker/Dockerfile
-          # Set the build context (usually repo root)
-          CONTEXT=.
-          # Set image name and tag
-          IMAGE_NAME=my-image:latest
-
-          # Build the image
-          buildah bud -f $DOCKERFILE_PATH -t $IMAGE_NAME $CONTEXT
