@@ -24,7 +24,7 @@ def test_moments_basic(messy_instance):
     result = messy_instance.moments(h, z)
     assert isinstance(result, np.ndarray)
     np.testing.assert_allclose(result, [np.mean(z**2), np.mean(z+1)])
-'''
+
 def test_is_even(messy_instance):
     f_even = x**2
     f_odd = x**3
@@ -36,14 +36,14 @@ def test_get_unique(messy_instance):
     unique = messy_instance.get_unique(H_s)
     assert len(unique) == 2
     assert all(isinstance(u, sp.Basic) for u in unique)
-
+'''
 def test_random_tree_and_basis(messy_instance):
     expr = messy_instance.random_tree(depth=2)
     assert isinstance(expr, sp.Basic)
     basis = messy_instance.create_basis(n_bases=3, tree_depth=1)
     assert len(basis) == 3
     assert all(isinstance(b, sp.Basic) for b in basis)
-
+'''
 def test_Hess_and_orthogonalization(messy_instance):
     X = np.linspace(-1,1,5)
     h_exprs = [x, x**2]
@@ -60,7 +60,7 @@ def test_pdf_hist(messy_instance):
     bin_centers = (bins[:-1] + bins[1:])/2
     pdf_val = messy_instance.pdf_hist(0.5, hist, bins, bin_centers)
     assert isinstance(pdf_val, float)
-
+'''
 def test_mgf_statio_basic(messy_instance):
     X_ = np.array([1.,2.,3.])
     ZZ = np.array([1.,2.,3.])
@@ -70,7 +70,7 @@ def test_mgf_statio_basic(messy_instance):
     assert lrs.shape == ZZ.shape
     assert isinstance(conv, bool)
     assert isinstance(max_cond, float)
-
+'''
 def test_check_exponent_overflow(messy_instance):
     expr = x**2
     samples = np.array([0.1, 0.5, 0.9])
@@ -89,5 +89,3 @@ def test_weighted_sum_piecewise_evaluator(messy_instance):
     arr = np.array([-1,0,2])
     res = messy_instance.weighted_sum_piecewise_evaluator([2,3], [expr1, expr2], arr)
     np.testing.assert_allclose(res, np.array([-2,0,6]))
-
-'''
