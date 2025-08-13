@@ -45,17 +45,17 @@ jobs:
             --maxfail=0 \
             test/
 
-      # 7. Build image with Buildah
-      - name: Install Buildah
-        run: sudo apt-get update && sudo apt-get install -y buildah
+      - name: Set up Buildah
+        uses: redhat-actions/setup-buildah@v2
 
       - name: Build container image
-        run: buildah bud -t my-image:latest .
-
-      # 8. Deploy (placeholder example)
-      - name: Deploy to remote
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
         run: |
-          echo "Deploying to $DEPLOY_SERVER..."
+          # Set the path to the Dockerfile
+          DOCKERFILE_PATH=docker/Dockerfile
+          # Set the build context (usually repo root)
+          CONTEXT=.
+          # Set image name and tag
+          IMAGE_NAME=my-image:latest
 
+          # Build the image
+          buildah bud -f $DOCKERFILE_PATH -t $IMAGE_NAME $CONTEXT
