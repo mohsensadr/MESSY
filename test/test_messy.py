@@ -18,6 +18,37 @@ def test_cos_sin_output_type():
     assert isinstance(c, sp.Basic)
     assert isinstance(s, sp.Basic)
 
+def test_kl_div(messy_instance):
+    # Simple probability function
+    XX = np.array([0.1, 0.5, 0.9])
+    f = lambda x: np.array([0.2, 0.5, 0.3])
+    w = np.array([1.0, 1.0, 1.0])
+
+    result = messy_instance.kl_div(XX, f, w)
+    expected = -np.average(np.log(f(XX) + 1e-10), weights=w)
+
+    assert np.isclose(result, expected), "kl_div output mismatch"
+
+def test_KL_Divergence_identical(messy_instance):
+    true_dist = lambda x: 0.5 * np.ones_like(x)
+    pred_dist = lambda x: 0.5 * np.ones_like(x)
+    xmin, xmax = 0, 1
+
+    result = messy_instance.KL_Divergence(true_dist, pred_dist, xmin, xmax)
+    
+    # KL divergence should be ~0 for identical distributions
+    assert np.isclose(result, 0.0, atol=1e-8), "KL_Divergence should be zero for identical distributions"
+
+def test_KL_Divergence_different(messy_instance):
+    true_dist = lambda x: 0.5 * np.ones_like(x)
+    pred_dist = lambda x: np.linspace(0.1, 0.9, len(x))
+    xmin, xmax = 0, 1
+
+    result = messy_instance.KL_Divergence(true_dist, pred_dist, xmin, xmax)
+
+    # KL divergence should be positive for different distributions
+    assert result > 0, "KL_Divergence should be positive for different distributions"
+
 def test_moments_basic(messy_instance):
     h = [lambda z: z**2, lambda z: z+1]
     z = np.array([1., 2., 3.])
