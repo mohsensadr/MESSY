@@ -3,9 +3,8 @@ import sympy as sp
 import random
 from scipy import integrate
 from scipy.linalg import solve, LinAlgError
-from sympy import oo, zoo, nan
-import matplotlib.pyplot as plt
-import warnings warnings.filterwarnings("ignore")
+import warnings
+warnings.filterwarnings("ignore")
 
 x = sp.symbols('x', real=True)
 
