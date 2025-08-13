@@ -38,7 +38,12 @@ jobs:
       # 6. Run tests with pytest
       - name: Run tests
         run: |
-          PYTHONPATH=. pytest --cov=my_package --cov-report=html
+          PYTHONPATH=. pytest \
+            --cov=src.messy \
+            --cov-report=term-missing \
+            --cov-report=html \
+            --maxfail=0 \
+            test/
 
       # 7. Build image with Buildah
       - name: Install Buildah
