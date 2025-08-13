@@ -7,9 +7,9 @@ from src import messy
 x = sp.symbols('x', real=True)
 
 # Fixture for MESSY instance
-#@pytest.fixture
-#def messy_instance():
-#    return messy.MESSY(dim=1, highest_order=2, nb_l=2, nb_u=4, poly_order=4, tree_depth=2)
+@pytest.fixture
+def messy_instance():
+    return messy.MESSY(dim=1, highest_order=2, nb_l=2, nb_u=4, poly_order=4, tree_depth=2)
 
 def test_cos_sin_output_type():
     # Test cos_ and sin_ functions return sympy expressions
